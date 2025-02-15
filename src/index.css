@@ -1,0 +1,93 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-fondo1: #a7dbd8;
+    --color-fondo2: #e0e4cc;
+    --color-secundario: #69d2e7;
+    --color-efecto1: #f38630;
+    --color-efecto2: #fa6900;
+    --color-texto: #000000;
+    --color-dark-fondo1: #405059;
+    --color-dark-fondo2: #948a71;
+    --color-dark-secundario: #0c8f8f;
+    --color-dark-efecto1: #395a4f;
+    --color-dark-efecto2: #fa6900;
+    --color-dark-texto: #ffffff;
+}
+
+*{
+    font-family: "Roboto", serif;
+}
+
+body {
+    @apply /*bg-linear-to-tr from-fondo1 to-fondo2 dark:bg-linear-to-tr dark:from-dark-fondo2 dark:to-dark-fondo1 bg-no-repeat;*/ w-[100%] h-[100dvh]
+}
+
+.home {
+    overflow: hidden;
+}
+
+.difuminar {
+    mask-image: linear-gradient(
+        -90deg, black 80%, transparent
+    )
+}
+
+.activo {
+    @apply bg-secundario w-[20px]
+}
+
+.theme-checkbox {
+    z-index: 50;
+    --toggle-size: 16px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 40px;
+    height: 20px;
+    background: -o-linear-gradient(left, var(--color-secundario) 50%, var(--color-dark-fondo1) 50%) no-repeat;
+    background: linear-gradient(to right, var(--color-secundario) 50%, var(--color-dark-fondo1) 50%) no-repeat;
+    opacity: 0.4;
+    background-size: 205%;
+    background-position: 0;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 99em;
+    position: absolute;
+    top: 70px;
+    right: 32px;
+    cursor: pointer;
+    font-size: var(--toggle-size);
+}
+
+.theme-checkbox:hover {
+    opacity: 0.8;
+}
+
+.theme-checkbox::before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    background: -o-linear-gradient(left, #efefef 50%, #2a2a2a 50%) no-repeat;
+    background: linear-gradient(to right, #efefef 50%, #2a2a2a 50%) no-repeat;
+    background-size: 205%;
+    background-position: 100%;
+    border-radius: 50%;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.theme-checkbox:checked::before {
+    left: calc(100% - -30px - 47.5px);
+    background-position: 0;
+}
+
+.theme-checkbox:checked {
+    background-position: 100%;
+}
