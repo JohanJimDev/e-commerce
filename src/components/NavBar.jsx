@@ -1,18 +1,23 @@
 import { NavLink } from "react-router-dom"
+import { useContext } from "react";
+import { ThemeContext } from "./../routes/context/ThemeContext";
 
-const bodyHome = document.querySelector("body");
-
-let navBar = bodyHome.classList.contains("dark")
-? {
-    search: "./../assets/images/dark-search.png",
-    login: "./../../assets/images/dark-avatar.png"
-}
-: {
-    search: "./../assets/images/search.png",
-    login: "./../../assets/images/avatar.png"
-}
-
+const bodyHome = document.querySelector("body");  
+if ( localStorage.theme === "dark") { bodyHome.classList.add("dark") };
 export const NavBar = () => {
+    const { pantalla, contenidoGral, value, navBar, theme } = useContext( ThemeContext )
+
+    const cambioTema = () => {
+            if ( theme === "dark" ) {
+                localStorage.theme = "";
+                bodyHome.classList.toggle("dark");
+            }
+            else {
+                localStorage.setItem("theme", "dark");
+                bodyHome.classList.toggle("dark");
+            }
+        };
+    
     return (
         <>
             <nav className="w-[100%] h-[80px] flex items-center justify-between px-[20px] py-[30px] absolute z-50">
@@ -28,7 +33,7 @@ export const NavBar = () => {
                     <li><NavLink to="login"><img className="w-[65px] h-[45px] px-[20px] py-[10px] rounded-3xl hover:bg-efecto1/30" src={navBar.login} alt="Login" /></NavLink></li>
                 </ul>
             </nav>
-            <input type="checkbox" className="theme-checkbox" onClick={ ()=> { cambioTema(); contenidoHome(valor) } } checked={ bodyHome.classList.contains("dark") ? true : false } />
+            <input type="checkbox" className="theme-checkbox" onClick={ ()=> { cambioTema(); contenidoGral(value) } } checked={ bodyHome.classList.contains("dark") ? true : false } />
         </>
     )
 }
