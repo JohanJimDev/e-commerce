@@ -12,7 +12,7 @@ let pantallaNueva = {};
 
 export const contenido = (val) => {
     if (val == "1") {
-        pantallaNueva = {imagenFondo:"./../assets/images/fondo-electronico.svg", imagenTipo: "./../assets/images/electronica.jpg", titulo:electronicos, info:infoElectronicos};
+        pantallaNueva = {imagenFondo:"./../assets/images/electronica.jpg", imagenTipo: "./../assets/images/electronica.jpg", titulo:electronicos, info:infoElectronicos};
     }
     else if (val == "2") {
         pantallaNueva = ({imagenFondo: "./../../assets/images/fondo-joyeria.jpg", imagenTipo: "./../../assets/images/joyeria.jpg", titulo:joyeria, info:infoJoyeria});
