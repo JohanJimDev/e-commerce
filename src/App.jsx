@@ -6,10 +6,11 @@ import { Favoritos } from "./routes/Favoritos.jsx"
 import { Carrito } from "./routes/Carrito.jsx"
 import { Login } from "./routes/Login.jsx"
 import { NotFound } from "./routes/NotFound.jsx"
+import { ThemeProvider } from "./routes/context/ThemeProvider.jsx"
 
 export const App = () => {
   return (
-    <>
+    <ThemeProvider>
       <NavBar></NavBar>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -19,6 +20,6 @@ export const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
-    </>
+    </ThemeProvider>
   )
 }
